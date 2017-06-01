@@ -6,4 +6,4 @@ My dotfiles for configuring a system the way I like it.
 
 1. `git clone git@github.com:joshrowley/dotfiles.git`
 2. `cd dotfiles`
-3. `install`
+3. `bin/install`
