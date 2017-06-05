@@ -1,5 +1,7 @@
 alias aliases='atom ~/.dotfiles/bash/aliases'
 alias c='cd ~/code'
 alias l='ls -lah'
+alias pull='git pull --rebase'
+alias push='git push'
 alias s='git status'
 alias so='source ~/.dotfiles/bash/aliases'
