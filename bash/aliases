@@ -1,0 +1,4 @@
+alias aliases='atom ~/.dotfiles/bash/aliases'
+alias c='cd ~/code'
+alias l='ls -lah'
+alias so='source ~/.dotfiles/bash/aliases'
