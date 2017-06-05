@@ -1,0 +1,21 @@
+[alias]
+	co = checkout
+	st = status
+	ci = commit
+	df = diff
+	lg = log
+	br = branch
+[user]
+	name = Josh Rowley
+	email = joshua.f.rowley@gmail.com
+[core]
+	editor = vim
+	ignorecase = false
+[color]
+	ui = true
+[push]
+	default = simple
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
