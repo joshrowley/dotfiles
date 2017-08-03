@@ -21,6 +21,7 @@ alias git='hub'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias issues='git browse -- issues'
 alias l='ls -lah'
+alias kdo='knife digital_ocean'
 alias pull='git pull --rebase'
 alias push='git push'
 alias reset='git reset HEAD~1'
