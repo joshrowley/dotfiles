@@ -157,7 +157,7 @@ map <leader>l oconsole.log('debugging')<esc>bb:w<cr>
 map <leader>p oputs 'debugging'<esc>bb:w<cr>
 
 " Map esc to clear search highlighting
-nnoremap <esc> :noh<return><esc>
+" nnoremap <esc> :noh<return><esc>
 
 " search for text in word under cursor in current dir
 :nnoremap gr :grep <cword> *<CR>
@@ -220,3 +220,5 @@ endif
 
 syntax on
 colorscheme onedark
+
+au VimEnter *  NERDTree
