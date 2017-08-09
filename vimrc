@@ -138,6 +138,9 @@ map <leader>tf :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map <leader>tm :tabmove
 
+map <leader>a :Ag 
+
+
 " Map \ to open Nerdtree
 map <Leader><Leader> :NERDTreeToggle<CR>
 
@@ -156,25 +159,11 @@ map <leader>q :wq!<return>
 map <leader>l oconsole.log('debugging')<esc>bb:w<cr>
 map <leader>p oputs 'debugging'<esc>bb:w<cr>
 
-" Map esc to clear search highlighting
-" nnoremap <esc> :noh<return><esc>
-
-" search for text in word under cursor in current dir
-:nnoremap gr :grep <cword> *<CR>
-" search for text in word under cursor in current file's dir
-:nnoremap Gr :grep <cword> %:p:h/*<CR>
-" search for text in whole word under cursor in current dir
-:nnoremap gR :grep '\b<cword>\b' *<CR>
-" search for text in whole word under cursor in current file's dir
-:nnoremap GR :grep '\b<cword>\b' %:p:h/*<CR>
-
 " don't show chars like ^I when looking at hard tabs
 set nolist
 
-
 " copy current buffers filepath into vim copy register
 :nmap cp :let @" = expand("%")
-
 
 
 " Controversial...swap colon and semicolon for easier commands
@@ -222,3 +211,10 @@ syntax on
 colorscheme onedark
 
 au VimEnter *  NERDTree
+
+
+map <leader> <1> :vertical resize -5<cr>
+map <leader> <2> :resize +5<cr>
+map <leader> <3> :resize -5<cr>
+map <leader> <4> :vertical resize +5<cr>
+"map <leader>tf :tabfirst<cr>
