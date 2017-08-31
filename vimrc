@@ -15,6 +15,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " My Plugins
 
+Plugin 'vim-scripts/vim-auto-save'
 Plugin 'scrooloose/nerdtree'
 Plugin 'wincent/command-t'
 Plugin 'tpope/vim-rails'
@@ -153,9 +154,13 @@ map <leader>e :bp<return>
 " Map ,s to horizontal split
 map <leader>s <C-w>s
 
+" .vimrc
+let g:auto_save = 1  " enable AutoSave on Vim startup
+
 " Map ,v to veritcal split
 map <leader>v <C-w>v
-map <leader>q :wq!<return>
+map <leader>w :w<return>
+map <leader>q :q<return>
 map <leader>l oconsole.log('debugging')<esc>bb:w<cr>
 map <leader>p oputs 'debugging'<esc>bb:w<cr>
 
