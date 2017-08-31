@@ -101,11 +101,6 @@ if &term =~ "xterm" || &term =~ "screen"
   let g:CommandTCancelMap = ['<ESC>', '<C-c>']
 endif
 
-
-
-
-
-
 set ruler                         " Show cursor position.
 
 set incsearch                     " Highlight matches as you type.
