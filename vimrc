@@ -15,6 +15,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " My Plugins
 
+Plugin 'zhaocai/GoldenView.Vim'
 Plugin 'vim-scripts/vim-auto-save'
 Plugin 'scrooloose/nerdtree'
 Plugin 'wincent/command-t'
@@ -96,6 +97,11 @@ endfunc
 
 nnoremap <C-n> :call NumberToggle()<return>
 
+if &term =~ "xterm" || &term =~ "screen"
+  let g:CommandTCancelMap = ['<ESC>', '<C-c>']
+endif
+
+
 
 
 
@@ -127,6 +133,8 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{exists('*CapsLockStatusline')?CapsLo
 
 " change the mapleader from \ to ,
 let mapleader=","
+
+map <leader><esc> :noh<return><esc>
 
 " Tab mappings.
 map <leader>tt :tabnew<cr>
