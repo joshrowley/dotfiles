@@ -4,6 +4,7 @@ filetype off                      " Required by vundle
 set nocompatible                  " Must come first because it changes other options.
 filetype off                      " Required by vundle
 
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -87,16 +88,6 @@ set smartcase                     " But case-sensitive if expression contains a 
 
 set number                        " Show line numbers.
 
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
-
-nnoremap <C-n> :call NumberToggle()<return>
-
 if &term =~ "xterm" || &term =~ "screen"
   let g:CommandTCancelMap = ['<ESC>', '<C-c>']
 endif
@@ -131,6 +122,8 @@ let mapleader=","
 
 map <leader><esc> :noh<return><esc>
 
+
+map <leader>r :NumbersToggle<CR>
 " Tab mappings.
 map <leader>tt :tabnew<cr>
 map <leader>te :tabedit
@@ -143,6 +136,7 @@ map <leader>tl :tablast<cr>
 map <leader>tm :tabmove
 
 map <leader>a :Ag 
+map <leader>g :Gblame<return>
 
 
 " Map \ to open Nerdtree
