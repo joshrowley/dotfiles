@@ -220,3 +220,7 @@ map <leader> <2> :resize +5<cr>
 map <leader> <3> :resize -5<cr>
 map <leader> <4> :vertical resize +5<cr>
 "map <leader>tf :tabfirst<cr>
+
+
+" $HOME/.vimrc
+:set directory=$HOME/.vim/swapfiles//
