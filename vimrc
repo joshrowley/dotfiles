@@ -17,7 +17,6 @@ Plugin 'VundleVim/Vundle.vim'
 " My Plugins
 
 Plugin 'zhaocai/GoldenView.Vim'
-Plugin 'vim-scripts/vim-auto-save'
 Plugin 'scrooloose/nerdtree'
 Plugin 'wincent/command-t'
 Plugin 'tpope/vim-rails'
@@ -157,7 +156,7 @@ let g:auto_save = 1  " enable AutoSave on Vim startup
 " Map ,v to veritcal split
 map <leader>v <C-w>v
 map <leader>w :w<return>
-map <leader>q :q<return>
+map <leader>q :wq<return>
 map <leader>l oconsole.log('debugging')<esc>bb:w<cr>
 map <leader>p oputs 'debugging'<esc>bb:w<cr>
 
@@ -224,3 +223,5 @@ map <leader> <4> :vertical resize +5<cr>
 
 " $HOME/.vimrc
 :set directory=$HOME/.vim/swapfiles//
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
