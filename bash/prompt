@@ -1,10 +1,6 @@
 export PATH=/usr/local/bin:$PATH
 eval "$(rbenv init -)"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # Git status bash prompt
 #
 # In addition to printing the current working directory, this prompt will
@@ -65,5 +61,5 @@ function git_branch {
   fi
 }
 
-PS1='🌲  \[`echo -e $dir_listing_color`\]\W \[`git_color`\]`git_branch`\[\e[0m\] '
+PS1='🔥  \[`echo -e $dir_listing_color`\]\W \[`git_color`\]`git_branch`\[\e[0m\] '
 PS2="> "

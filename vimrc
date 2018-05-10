@@ -221,7 +221,4 @@ map <leader> <4> :vertical resize +5<cr>
 "map <leader>tf :tabfirst<cr>
 
 
-" $HOME/.vimrc
-:set directory=$HOME/.vim/swapfiles//
-
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

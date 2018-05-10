@@ -8,6 +8,7 @@
 [user]
 	name = Josh Rowley
 	email = joshua.f.rowley@gmail.com
+	signingkey = 9E9B1E034F204644
 [core]
 	editor = vim
 	ignorecase = false
