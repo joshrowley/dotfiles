@@ -222,3 +222,7 @@ map <leader> <4> :vertical resize +5<cr>
 
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let NERDSpaceDelims=1
+nnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
+vnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
