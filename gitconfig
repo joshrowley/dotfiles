@@ -7,10 +7,10 @@
 	br = branch
 [user]
 	name = Josh Rowley
-	email = joshua.f.rowley@gmail.com
+	email = josh.rowley@betterment.com
 	signingkey = 3A7BA94B6AC4F05D
 [core]
-	editor = vim
+	editor = code --wait
 	ignorecase = false
 [color]
 	ui = true
@@ -25,3 +25,7 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
+[init]
+	templatedir = /Users/joshrowley/.git-templates
+[credential]
+	helper = osxkeychain
