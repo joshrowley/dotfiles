@@ -17,3 +17,16 @@ if [ -f '/Users/joshrowley/google-cloud-sdk/path.bash.inc' ]; then . '/Users/jos
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/joshrowley/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/joshrowley/google-cloud-sdk/completion.bash.inc'; fi
+
+# Usage add_alias [name] [command]
+# Example: add_alias today date +%Y-%m-%d
+# creates the alias today, which executes "date +%Y-%m-%d"
+# make sure to add a line "source ~/.bash_aliases" to your config
+function add_alias ()
+{
+   local cmd=$1;
+   shift;
+   local rest="$@";
+   echo "alias $cmd=\"$rest\"" >> ~/.bash/aliases;
+   source ~/.bash/aliases
+}
