@@ -5,14 +5,18 @@ task default: :install
 desc 'install dotfiles'
 task :install do
   replace_all = false
-
   Dir['*'].each do |file|
     next if %w[Rakefile readme.md].include?(file)
 
-    if File.exist?(File.join(ENV['HOME'], ".#{file}"))
+    file_path = File.join(ENV['HOME'], ".#{file}")
+    puts file_path
+
+    if File.exist?(file_path)
       if replace_all
+        puts 'replacing all'
         replace_file(file)
       else
+        puts 'overwrite?'
         print "overwrite ~/.#{file}? [ynaq] "
         case $stdin.gets.chomp
         when 'a'

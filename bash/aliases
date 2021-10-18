@@ -28,7 +28,6 @@ alias gl="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(y
 alias issues='git browse -- issues'
 alias ip='curl ipinfo.io/ip'
 alias l='ls -lah'
-alias mycoach="RBENV_VERSION=$(cat $HOME/src/coach/coach_cli/.ruby-version) BUNDLE_GEMFILE=$HOME/src/coach/coach_cli/Gemfile bundle exec $HOME/src/coach/coach_cli/exe/coach"
 alias k='kubectl'
 alias kgp='kubectl get pods'
 alias kdo='knife digital_ocean'
