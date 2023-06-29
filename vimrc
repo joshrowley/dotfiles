@@ -140,7 +140,7 @@ map <leader>g :Gblame<return>
 map <Leader><Leader> :NERDTreeToggle<CR>
 
 " Map ,f to command-t
-map <leader>f :CommandT<return>
+map <leader>f :CommandTSearch<return>
 
 " Map ,e previous buffer
 map <leader>e :bp<return>
