@@ -3,4 +3,5 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export EDITOR="code --wait"
 export VISUAL="$EDITOR"
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(rbenv init -)"
