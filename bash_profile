@@ -30,5 +30,3 @@ function add_alias ()
    echo "alias $cmd=\"$rest\"" >> ~/.bash/aliases;
    source ~/.bash/aliases
 }
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
