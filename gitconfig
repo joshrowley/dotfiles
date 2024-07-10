@@ -7,7 +7,7 @@
 	br = branch
 [user]
 	name = Josh Rowley
-	email = joshrowley@github.com
+	email = joshua.f.rowley@gmail.com
 	signingkey = 3A7BA94B6AC4F05D
 [core]
 	editor = code --wait
