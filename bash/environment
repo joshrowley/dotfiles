@@ -2,6 +2,7 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export EDITOR="code --wait"
 export VISUAL="$EDITOR"
+export HEROKU_APP=jrow
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(rbenv init -)"
