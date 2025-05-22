@@ -1,6 +1,6 @@
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-export EDITOR="code --wait"
+export EDITOR="cursor --wait"
 export VISUAL="$EDITOR"
 export HEROKU_APP=jrow
 
