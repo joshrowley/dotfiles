@@ -6,3 +6,59 @@ export HEROKU_APP=jrow
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(rbenv init -)"
+
+
+
+# Add PostgreSQL to PATH
+export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
+
+# Set PostgreSQL environment variables
+export PGDATA="/opt/homebrew/var/postgresql@17"
+
+# Add go-installed binaries to your PATH
+export PATH=$PATH:$(go env GOPATH)/bin
+# Configures NodeJS to trust your local CA, enabling HTTPS requests to the local API servers.
+# For more details, visit https://github.com/FiloSottile/mkcert#using-the-root-with-nodejs
+export NODE_EXTRA_CA_CERTS="$(mkcert -CAROOT)/rootCA.pem"
+# Load NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Function to auto-load .nvmrc version
+load-nvmrc() {
+  local nvmrc_path
+  nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version
+    nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
+      nvm use
+    fi
+  elif [ -n "$(PWD=$OLDPWD nvm_find_nvmrc)" ] && [ "$(nvm version)" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+
+# Hook it into directory changes
+__bash_nvm_auto_use() {
+  load-nvmrc
+}
+
+# Append to PROMPT_COMMAND to run before each prompt
+if [[ "$PROMPT_COMMAND" != *"__bash_nvm_auto_use"* ]]; then
+  PROMPT_COMMAND="__bash_nvm_auto_use;$PROMPT_COMMAND"
+fi
+
+# pnpm
+export PNPM_HOME="/Users/joshrowley/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
