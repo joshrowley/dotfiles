@@ -60,5 +60,63 @@ function git_branch {
   fi
 }
 
+function git-open-branch() {
+  remote_url=$(git config --get remote.origin.url)
+  if [[ -z "$remote_url" ]]; then
+    echo "No remote origin found."
+    return 1
+  fi
+
+  current_branch=$(git rev-parse --abbrev-ref HEAD)
+  if [[ -z "$current_branch" ]]; then
+    echo "Could not determine current branch."
+    return 1
+  fi
+
+  # Convert SSH URL to HTTPS if needed
+  if [[ "$remote_url" =~ ^git@github.com:(.*)\.git$ ]]; then
+    repo_path="${BASH_REMATCH[1]}"
+    web_url="https://github.com/$repo_path/tree/$current_branch"
+  elif [[ "$remote_url" =~ ^https://github.com/(.*)\.git$ ]]; then
+    repo_path="${BASH_REMATCH[1]}"
+    web_url="https://github.com/$repo_path/tree/$current_branch"
+  else
+    echo "Unsupported remote URL: $remote_url"
+    return 1
+  fi
+
+  echo "Opening $web_url"
+  open "$web_url"  # macOS
+  # For Linux use: xdg-open "$web_url"
+}
+
+function git-open-pr() {
+  if ! git rev-parse --is-inside-work-tree &>/dev/null; then
+    echo "Not inside a Git repository."
+    return 1
+  fi
+
+  # Ensure gh CLI is installed
+  if ! command -v gh &>/dev/null; then
+    echo "GitHub CLI (gh) is not installed. Install it with \`brew install gh\`"
+    return 1
+  fi
+
+  # Get the current branch name
+  branch=$(git symbolic-ref --short HEAD)
+
+  # Check if a PR already exists
+  pr_url=$(gh pr view "$branch" --json url --jq .url 2>/dev/null)
+
+  if [[ -n "$pr_url" ]]; then
+    echo "Opening existing PR: $pr_url"
+    open "$pr_url"  # macOS
+    # xdg-open "$pr_url" # Linux
+  else
+    echo "No PR found. Opening new PR creation page..."
+    gh pr create --web
+  fi
+}
+
 PS1='🔥  \[`echo -e $dir_listing_color`\]\W \[`git_color`\]`git_branch`\[\e[0m\] '
 PS2="> "
