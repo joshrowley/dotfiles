@@ -6,9 +6,8 @@
 	lg = log
 	br = branch
 [user]
-	name = Josh Rowley
-	email = joshua.f.rowley@gmail.com
-	signingkey = 9C06EAF5A96D33F1
+	name = YOUR_NAME
+	email = YOUR_EMAIL
 [core]
 	editor = cursor --wait
 	ignorecase = false
@@ -26,8 +25,9 @@
 	required = true
 	clean = git-lfs clean -- %f
 [init]
-	templatedir = /Users/joshrowley/.git-templates
+	templatedir = ~/.git-templates
 [credential]
 	helper = osxkeychain
 [commit]
 	gpgsign = true
+	signingkey = YOUR_SIGNING_KEY 
