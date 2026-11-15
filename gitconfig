@@ -5,6 +5,8 @@
 	df = diff
 	lg = log
 	br = branch
+	unstage = reset HEAD --
+	last = log -1 HEAD
 [user]
 	name = Josh Rowley
 	email = joshua.f.rowley@gmail.com
@@ -13,9 +15,10 @@
 	editor = code --wait
 	ignorecase = false
 [color]
-	ui = true
+	ui = auto
 [push]
 	default = simple
+	autoSetupRemote = true
 [filter "hawser"]
 	clean = git hawser clean %f
 	smudge = git hawser smudge %f
@@ -27,6 +30,7 @@
 	clean = git-lfs clean -- %f
 [init]
 	templatedir = /Users/joshrowley/.git-templates
+	defaultBranch = main
 [credential]
 	helper = osxkeychain
 [commit]
