@@ -10,7 +10,7 @@
 	email = joshua.f.rowley@gmail.com
 	signingkey = 9C06EAF5A96D33F1
 [core]
-	editor = cursor --wait
+	editor = code --wait
 	ignorecase = false
 [color]
 	ui = true
