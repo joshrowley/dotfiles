@@ -7,10 +7,6 @@
 	br = branch
 	unstage = reset HEAD --
 	last = log -1 HEAD
-[user]
-	name = Josh Rowley
-	email = joshua.f.rowley@gmail.com
-	signingkey = 9C06EAF5A96D33F1
 [core]
 	editor = code --wait
 	ignorecase = false
@@ -29,9 +25,11 @@
 	required = true
 	clean = git-lfs clean -- %f
 [init]
-	templatedir = /Users/joshrowley/.git-templates
+	templatedir = ~/.git-templates
 	defaultBranch = main
 [credential]
 	helper = osxkeychain
 [commit]
 	gpgsign = true
+[include]
+	path = ~/.gitconfig.local

@@ -2,7 +2,6 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export EDITOR="code --wait"
 export VISUAL="$EDITOR"
-export HEROKU_APP=jrow
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(rbenv init -)"
@@ -56,7 +55,7 @@ if [[ "$PROMPT_COMMAND" != *"__bash_nvm_auto_use"* ]]; then
 fi
 
 # pnpm
-export PNPM_HOME="/Users/joshrowley/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;

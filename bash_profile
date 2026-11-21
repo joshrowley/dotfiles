@@ -2,6 +2,8 @@ source ~/.bash/environment
 source ~/.bash/aliases
 source ~/.bash/prompt
 source ~/.bash/git_autocomplete
+# Machine-specific aliases and settings, not tracked
+[ -f ~/.bash/local ] && source ~/.bash/local
 source ~/.bashrc
 
 # added by Anaconda3 5.1.0 installer
@@ -13,10 +15,10 @@ export GPG_TTY=$(tty)
 [ -f ~/.bashrc ] && source ~/.bashrc
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/joshrowley/google-cloud-sdk/path.bash.inc' ]; then . '/Users/joshrowley/google-cloud-sdk/path.bash.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then . "$HOME/google-cloud-sdk/path.bash.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/joshrowley/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/joshrowley/google-cloud-sdk/completion.bash.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then . "$HOME/google-cloud-sdk/completion.bash.inc"; fi
 
 # Usage add_alias [name] [command]
 # Example: add_alias today date +%Y-%m-%d

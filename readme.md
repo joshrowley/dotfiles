@@ -8,7 +8,7 @@ My dotfiles for configuring a system the way I like it.
 
 ## Installation
 
-1. `git clone git@github.com:joshrowley/dotfiles.git`
+1. `git clone <this repo>`
 2. `cd dotfiles`
 3. `rake`
 
@@ -23,3 +23,10 @@ My dotfiles for configuring a system the way I like it.
 `claude/` holds Claude Code's user settings and hook scripts. `rake` links each
 file into `~/.claude/` individually, because Claude Code keeps its own runtime
 files in that folder.
+
+## Local, untracked files
+
+Personal and machine-specific settings stay out of this repo:
+
+- `~/.gitconfig.local`: your `[user]` name, email and signing key. `gitconfig` includes it.
+- `~/.bash/local` (`bash/local`, gitignored): work or project aliases and env vars. `bash_profile` sources it if present.
