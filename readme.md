@@ -18,3 +18,8 @@ My dotfiles for configuring a system the way I like it.
 1. `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 1. `vim .`
 1. `:PluginInstall`
+## Claude Code
+
+`claude/` holds Claude Code's user settings and hook scripts. `rake` links each
+file into `~/.claude/` individually, because Claude Code keeps its own runtime
+files in that folder.
