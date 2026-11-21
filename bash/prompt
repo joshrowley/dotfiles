@@ -51,6 +51,7 @@ function git_color {
 }
 
 function git_branch {
+  local untracked=""
   git_branch=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
   if [ -n  "`git status 2> /dev/null | grep "Untracked files:"`" ]; then
     untracked="*"

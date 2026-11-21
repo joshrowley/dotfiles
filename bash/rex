@@ -1,0 +1,57 @@
+# Rex terminal integration (https://www.superlogical.com/rex/docs).
+# Sourced from bash_profile after bash/prompt, so PS1 already exists.
+# Works in bash 3.2 (macOS /bin/bash): no PS0, so no OSC 133 C mark.
+
+# The rex CLI. Rex puts it on PATH inside its own terminals; this adds it
+# everywhere else (iTerm, editors, Claude Code), so `rex` and the Rex agent
+# skill work from any shell.
+_rex_cli_dir="$HOME/Library/Application Support/com.superlogical.rex/RexServer/Versions/Current/Rex Server.app/Contents/MacOS"
+if ! command -v rex >/dev/null 2>&1 && [ -x "$_rex_cli_dir/rex" ]; then
+  export PATH="$PATH:$_rex_cli_dir"
+fi
+unset _rex_cli_dir
+
+[[ $- == *i* ]] || return 0
+
+# eval, not `source <(...)`: bash 3.2 can't source a process substitution.
+command -v rex >/dev/null 2>&1 && eval "$(rex completion bash)"
+
+# Report the working directory (OSC 7) so new splits, `rex` actions such as
+# Dev Layout Here, and the sidebar know where each pane is.
+__rex_osc7() {
+  local p=${PWD//%/%25}
+  p=${p// /%20}
+  printf '\e]7;file://%s%s\a' "$HOSTNAME" "$p"
+}
+
+# Mark prompts (OSC 133) so Rex can jump between them (client.prompt.previous
+# and .next) and knows each command's exit status.
+__rex_prompt() {
+  local status=$?
+  [ -n "$__rex_ran" ] && printf '\e]133;D;%s\a' "$status"
+  __rex_ran=1
+  __rex_osc7
+  return $status
+}
+
+if [[ "$PROMPT_COMMAND" != *__rex_prompt* ]]; then
+  PROMPT_COMMAND="__rex_prompt${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
+  PS1='\[\e]133;A\a\]'"$PS1"'\[\e]133;B\a\]'
+fi
+
+# Report a status to Rex's sidebar (OSC 7501), e.g. after a long job:
+#   bin/rails test; rex_status done "tests finished"
+# States: idle, working, done, blocked, error, clear.
+rex_status() {
+  local msg
+  msg=$(printf '%s' "${2:-}" | base64 | tr -d '\n')
+  printf '\e]7501;state=%s:msg=%s\a' "${1:-clear}" "$msg"
+}
+
+# Mark the pane done or error based on how the last command exited:
+#   bin/ci; rexdone
+rexdone() {
+  local status=$?
+  if [ $status -eq 0 ]; then rex_status done "finished"; else rex_status error "exit $status"; fi
+  return $status
+}

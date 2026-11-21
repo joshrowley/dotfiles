@@ -5,8 +5,8 @@ task default: :install
 
 # Directories whose files are linked one by one instead of linking the whole
 # directory, because the app also keeps its own runtime files there.
-# claude/settings.json -> ~/.claude/settings.json
-NESTED = %w[claude].freeze
+# claude/settings.json -> ~/.claude/settings.json, config/rex/init.lua -> ~/.config/rex/init.lua
+NESTED = %w[claude config].freeze
 
 desc 'install dotfiles'
 task :install do

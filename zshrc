@@ -1,9 +1,3 @@
-# Create a unique session log file
-ZSH_SESSION_LOG=~/.zsh_sessions/session_$(date +%Y-%m-%d_%H-%M-%S)_$$.log
-
-# Log all input and output
-exec > >(tee -a "$ZSH_SESSION_LOG") 2>&1
-
 # Set history file and size
 HISTFILE=~/.zsh_history
 HISTSIZE=100000               # Number of commands in memory
